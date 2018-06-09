@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebBoxToDo.Models;
 
 namespace WebBoxToDo.Controllers
 {
@@ -13,16 +14,14 @@ namespace WebBoxToDo.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Registracion()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Login(string email, string contrasenia)
         {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
