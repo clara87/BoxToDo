@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebBoxToDo.Models;
+using DataAccessLayer;
+using System.Net;
+using System.Data.Entity;
 
 namespace WebBoxToDo.Controllers
 {
@@ -14,7 +16,7 @@ namespace WebBoxToDo.Controllers
         // GET: Carpetas
         public ActionResult Index()
         {
-            List<Carpeta> carpetas = ctx.Carpeta.ToList();
+            List<Carpeta> carpetas = ctx.Carpeta.OrderBy(a =>a.Nombre).ToList();
             return View(carpetas);
         }
 
@@ -26,23 +28,38 @@ namespace WebBoxToDo.Controllers
         [HttpPost]
         public ActionResult Crear(Carpeta carpeta)
         {
-            carpeta.FechaCreacion = DateTime.Now;
-
-
-            ctx.Carpeta.Add(carpeta);
-
-            ctx.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                carpeta.FechaCreacion = DateTime.Now;
+                ctx.Carpeta.Add(carpeta);
+                ctx.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(carpeta);
         }
 
-        public ActionResult Tareas(int idCarpeta)
+
+
+        public ActionResult Tareas(int id)
         {
-            //if (idCarpeta != null)
-            //{
-            //    List<Tarea> misTareas = ctx.Tarea.Where(a => a.IdCarpeta == idCarpeta , a => a.IdCarpeta == null).ToList();
-            //    return View(misTareas);
-            //}
-                return View("Index");
+            List<Tarea> misTareas = ctx.Tarea.OrderBy(a => a.Prioridad).OrderBy(a => a.FechaFin).Where(a => a.IdCarpeta == id).ToList();
+            ViewBag.NombreCarpeta = ctx.Carpeta.FirstOrDefault(a => a.IdCarpeta == id).Nombre;
+            return View(misTareas);
+        }
+
+        //para otro select
+        public ActionResult ListarCarpetasOrdenadas()
+        {
+            List<Carpeta> carpetasOrdenadas = ctx.Carpeta.OrderBy(a => a.IdUsuario).Where(a => a.IdUsuario != null).ToList();
+            return PartialView(carpetasOrdenadas);
+
+        }
+
+        public ActionResult MenuCarpetas()
+        {
+            List<Carpeta> menuCarpetas = ctx.Carpeta.OrderBy(a => a.Nombre).ToList();
+            return PartialView(menuCarpetas);
         }
     }
+
 }

@@ -1,78 +1,73 @@
-﻿@model IEnumerable<WebBoxToDo.Models.Tarea>
+﻿@model IEnumerable<DataAccessLayer.Tarea>
 
 @{
-    ViewBag.Title = "Tareas";
+    ViewBag.Title = "Tareas en carpeta";
 }
 
-<h2>Tareas</h2>
+<h2>Carpeta @ViewBag.NombreCarpeta</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EstimadoHoras)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaFin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prioridad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Completada)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaCreacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.Nombre)
-        </th>
-        <th></th>
+        <th>Fecha Fin</th>
+        <th>Nombre</th>
+        <th>Prioridad</th>
+        <th>Estimado</th>
+        <th>Completada</th>
+        <th>Acción</th>
+        <th>¿Completar?</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>@if(item.FechaFin !=null){@item.FechaFin.Value.ToShortDateString()}</td>
+        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdCarpeta)
+            @switch (item.Prioridad)
+            {
+                case 1:
+                    <span>Urgente</span>
+                    break;
+                case 2:
+                    <span>Alta</span>
+                    break;
+                case 3:
+                    <span>Media</span>
+                    break;
+                case 4:
+                    <span>Baja</span>
+                    break;
+                default:
+                    <span>Sin prioridad</span>
+                    break;
+
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
+            @if (item.EstimadoHoras != null)
+            {
+                @Html.DisplayFor(modelItem => item.EstimadoHoras)
+            }else
+            {
+                <span>Indefinido</span>
+            }
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
+         <td>
+            @if (item.Completada == 0)
+            {
+                <span>Incompleta</span>
+            }
+            else
+            {
+                <span>Completa</span>
+            }
         </td>
+        <td><a href="Tareas/Detalle/@item.IdTarea">Ver</a></td>
         <td>
-            @Html.DisplayFor(modelItem => item.EstimadoHoras)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaFin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prioridad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Completada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaCreacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdTarea }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdTarea }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdTarea })
+            @if(item.Completada == 0)
+            {
+                @Html.CheckBox("Completar", false)
+            }
         </td>
     </tr>
 }
-
 </table>

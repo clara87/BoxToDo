@@ -152,38 +152,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarpetasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TareasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArchivoTarea.cs">
-      <DependentUpon>ModeloDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Carpeta.cs">
-      <DependentUpon>ModeloDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ComentarioTarea.cs">
-      <DependentUpon>ModeloDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloDeDatos.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloDeDatos.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloDeDatos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloDeDatos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloDeDatos.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tarea.cs">
-      <DependentUpon>ModeloDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Usuario.cs">
-      <DependentUpon>ModeloDeDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -194,27 +165,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ModeloDeDatos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloDeDatos.Context.cs</LastGenOutput>
-      <DependentUpon>ModeloDeDatos.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ModeloDeDatos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloDeDatos.edmx</DependentUpon>
-      <LastGenOutput>ModeloDeDatos.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\ModeloDeDatos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloDeDatos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModeloDeDatos.edmx.diagram">
-      <DependentUpon>ModeloDeDatos.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -245,9 +199,14 @@
     <Content Include="Views\Carpetas\Index.cshtml" />
     <Content Include="Views\Carpetas\Crear.cshtml" />
     <Content Include="Views\Carpetas\Tareas.cshtml" />
+    <Content Include="Views\Tareas\Index.cshtml" />
+    <Content Include="Views\Tareas\Crear.cshtml" />
+    <Content Include="Views\Carpetas\ListarCarpetasOrdenadas.cshtml" />
+    <Content Include="Views\Carpetas\MenuCarpetas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -264,6 +223,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{9E6673BD-66EB-43AB-943D-B269B509F1AC}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
