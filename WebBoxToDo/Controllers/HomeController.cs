@@ -8,7 +8,7 @@ using DataAccessLayer.Models;
 using Newtonsoft.Json.Linq;
 using System.Data.Entity.Validation;
 using System.Net;
-
+using ServiceLayer.Services;
 
 namespace WebBoxToDo.Controllers
 {
@@ -18,16 +18,19 @@ namespace WebBoxToDo.Controllers
 
         public ActionResult Index()
         {
-            if (Request.Cookies["recordarme"] != null && Request.Cookies["recordarme"]["estado"] == "verdadero")
-            {
-                int id = Convert.ToInt32(Request.Cookies["recordarme"]["idUsuario"]);
-                Usuario UsLog = ctx.Usuario.FirstOrDefault(o => o.IdUsuario == id);
-                Session["login"] = true;
-                Session["id"] = UsLog.IdUsuario;
+            if (Request.Cookies["recordarme"] != null)
+            {                
+                if (Request.Cookies["recordarme"]["estado"] == Seguridad.GetSHA1("verdadero"))
+                {
+                    int id = Convert.ToInt32(Request.Cookies["recordarme"]["idUsuario"]);                    
+                    Usuario UsLog = ctx.Usuario.FirstOrDefault(o => o.IdUsuario == id);
+                    Session["login"] = true;
+                    Session["id"] = UsLog.IdUsuario;
 
-                return View("Home", UsLog);
+                    return View("Home", UsLog);
+                }
             }
-
+            
             return View();
         }
 
@@ -143,9 +146,12 @@ namespace WebBoxToDo.Controllers
                     {
                         if (Us.Recordarme is true)
                         {
+                            // encriptamos la cadena inicial                            
+                            string idUsuario = UsLog.IdUsuario.ToString();
+                            string estado = Seguridad.GetSHA1("verdadero");
                             HttpCookie recordarme = new HttpCookie("recordarme");
-                            recordarme["estado"] = "verdadero";
-                            recordarme["idUsuario"] = UsLog.IdUsuario.ToString();
+                            recordarme["estado"] = estado;
+                            recordarme["idUsuario"] = idUsuario;
                             recordarme.Expires = DateTime.Now.AddDays(1);
                             Response.Cookies.Add(recordarme);
                         }

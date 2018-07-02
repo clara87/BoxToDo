@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CarpetaService.cs" />
+    <Compile Include="Services\Seguridad.cs" />
     <Compile Include="Services\TareaService.cs" />
   </ItemGroup>
   <ItemGroup>

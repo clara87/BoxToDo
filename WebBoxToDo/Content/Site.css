@@ -3,9 +3,13 @@ html {
     height: 100%;
 }
 
+body {
+    height: 100%;
+}
+
 /*Clase que da el color al background en el login*/
-.background-index {
-    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+.background-index {    
+    background: linear-gradient(141deg, #e6f2ff 5%, #1fc8db 51%, #006fe6 90%);
     /*background: linear-gradient(to bottom right, red, yellow);*/
 }
 
@@ -39,4 +43,55 @@ html {
     color: #007bff;
     border-bottom: 1px solid #007bff;
     margin: 4% 0 4% 0;
+}
+
+
+/*Navbar*/
+.navbar {   
+    margin-bottom: 0px;     
+}
+
+.navbar-color {
+    background-color: #026aa7;
+    border-color: #026aa7;    
+}
+
+.navbar-header > a {
+    color: white;
+}
+
+.nav > li > a {
+    color: white;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #026aa7; 
+}
+
+
+/*Estilos para el menu*/
+.background-menu {
+    background: linear-gradient(to bottom, #e4e6e7 10%, #838c91 90%);
+    /*background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(192,192,192,1));*/
+}
+
+.list-group {
+    margin-top: 40px;
+}
+
+
+.list-group-item > a {
+    text-decoration: none !important;
+}
+
+
+/*Estilo para el contenido*/
+.background-contenido {
+    /*background: rgb(248, 245, 237);*/
+    background: #edeff0;
+}
+
+.altura-menu {
+    height:inherit;
 }
