@@ -203,6 +203,9 @@
     <Content Include="Views\Tareas\Crear.cshtml" />
     <Content Include="Views\Carpetas\ListarCarpetasOrdenadas.cshtml" />
     <Content Include="Views\Carpetas\MenuCarpetas.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,8 +229,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{9E6673BD-66EB-43AB-943D-B269B509F1AC}</Project>
+      <Project>{9e6673bd-66eb-43ab-943d-b269b509f1ac}</Project>
       <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
+      <Project>{5A93C932-B6A6-46F7-A94A-CA3FAFDE1C6E}</Project>
+      <Name>ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
