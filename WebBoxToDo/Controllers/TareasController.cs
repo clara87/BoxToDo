@@ -4,16 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DataAccessLayer;
+using ServiceLayer.Services;
 
 namespace WebBoxToDo.Controllers
 {
     public class TareasController : Controller
     {
         BoxToDo_Contexto ctx = new BoxToDo_Contexto();
+        TareaService tareaService = new TareaService();
+
         // GET: Tareas
         public ActionResult Index()
         {
-            List<Tarea> tareas = ctx.Tarea.ToList();
+            List<Tarea> tareas = tareaService.ListarTareas();
             return View(tareas);
         }
 
@@ -25,11 +28,7 @@ namespace WebBoxToDo.Controllers
         [HttpPost]
         public ActionResult Crear(Tarea tarea)
         {
-            tarea.FechaCreacion = DateTime.Now;
-            tarea.IdUsuario = 2;
-            tarea.Completada = 0;
-            ctx.Tarea.Add(tarea);
-            ctx.SaveChanges();
+            tareaService.CrearTarea(tarea);
             return RedirectToAction("Index");
         }
 
