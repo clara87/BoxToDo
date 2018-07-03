@@ -1,7 +1,66 @@
-﻿
+﻿@model IEnumerable<DataAccessLayer.Tarea>
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Inicio";
 }
 
-<h2>Home</h2>
+<h2>Tareas incompletas</h2>
 
+<table class="table">
+    <tr>
+        <th>Fecha Fin</th>
+        <th>Nombre</th>
+        <th>Prioridad</th>
+        <th>Estimado</th>
+        <th>Acción</th>
+        <th>¿Completar?</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.FechaFin != null)
+                {@item.FechaFin.Value.ToShortDateString()}
+        </td>
+        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+        <td>
+            @switch (item.Prioridad)
+            {
+                case 1:
+                    <span>Urgente</span>
+                    break;
+                case 2:
+                    <span>Alta</span>
+                    break;
+                case 3:
+                    <span>Media</span>
+                    break;
+                case 4:
+                    <span>Baja</span>
+                    break;
+                default:
+                    <span>Sin prioridad</span>
+                    break;
+
+            }
+        </td>
+        <td>
+            @if (item.EstimadoHoras != null)
+            {
+                @Html.DisplayFor(modelItem => item.EstimadoHoras)
+            }
+            else
+            {
+                <span>Indefinido</span>
+            }
+        </td>
+        <td><a href="Tareas/Detalle/@item.IdTarea">Ver</a></td>
+        <td>
+            @if (item.Completada == 0)
+            {
+                @Html.CheckBox("Completar", false)
+            }
+        </td>
+    </tr>
+}
+</table>

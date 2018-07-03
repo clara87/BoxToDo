@@ -14,8 +14,7 @@ namespace WebBoxToDo.Controllers
 {
     public class HomeController : Controller
     {
-        //BoxToDo_Contexto ctx = new BoxToDo_Contexto();
-        HomeService homeService =new  HomeService();
+        BoxToDo_Contexto ctx = new BoxToDo_Contexto();
 
         public ActionResult Index()
         {
@@ -24,7 +23,7 @@ namespace WebBoxToDo.Controllers
                 if (Request.Cookies["recordarme"]["estado"] == Seguridad.GetSHA1("verdadero"))
                 {
                     int id = Convert.ToInt32(Request.Cookies["recordarme"]["idUsuario"]);                    
-                    Usuario UsLog = homeService.BuscarUsuarioPorId(id);
+                    Usuario UsLog = ctx.Usuario.FirstOrDefault(o => o.IdUsuario == id);
                     Session["login"] = true;
                     Session["id"] = UsLog.IdUsuario;
 
@@ -52,21 +51,57 @@ namespace WebBoxToDo.Controllers
             var obj = JObject.Parse(result);
             var status = (bool)obj.SelectToken("success");
             ViewBag.Message = status ? "Google reCaptcha validation success" : "Google reCaptcha validation failed";
-          
+            status = true;
 
             if (ModelState.IsValid && status == true)
             {
                 BoxToDo_Contexto ctx = new BoxToDo_Contexto();
-                Usuario UsEncontrado = homeService.BuscarUsuarioPorEmailInactivo(UsReg);
+                Usuario UsEncontrado = ctx.Usuario.FirstOrDefault(o => o.Email == UsReg.Email && o.Activo == 0);
 
                 if (UsEncontrado == null)
                 {
-                    homeService.CrearUsuario(UsReg, result);
+                    Usuario UsNuevo = new Usuario();
+                    UsNuevo.Nombre = UsReg.Nombre;
+                    UsNuevo.Apellido = UsReg.Apellido;
+                    UsNuevo.Email = UsReg.Email;
+                    UsNuevo.Contrasenia = UsReg.Contrasenia;
+                    UsNuevo.FechaRegistracion = DateTime.Now;
+                    UsNuevo.CodigoActivacion = result;
+
+                    ctx.Usuario.Add(UsNuevo);
+                    //ctx.SaveChanges();
+
+                    try
+                    {
+                        ctx.SaveChanges();
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        // Retrieve the error messages as a list of strings.
+                        var errorMessages = ex.EntityValidationErrors
+                                .SelectMany(x => x.ValidationErrors)
+                                .Select(x => x.ErrorMessage);
+
+                        // Join the list to a single string.
+                        var fullErrorMessage = string.Join("; ", errorMessages);
+
+                        // Combine the original exception message with the new one.
+                        var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                        // Throw a new DbEntityValidationException with the improved exception message.
+                        throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+                    }
                 }
-                else if (UsEncontrado.Activo == 0)
+                else
                 {
-                    homeService.ReactivarUsuario(UsReg,UsEncontrado);                  
-                    return View("Login");           
+                    UsEncontrado.Nombre = UsReg.Nombre;
+                    UsEncontrado.Apellido = UsReg.Apellido;
+                    UsEncontrado.Contrasenia = UsReg.Contrasenia;
+                    UsEncontrado.Activo = 1;
+                    UsEncontrado.FechaActivacion = DateTime.Now;
+
+                    ViewBag.Reactivado = UsReg;
+                    return View("Reactivacion");
                 }
 
                 return RedirectToAction("Index");
@@ -101,7 +136,7 @@ namespace WebBoxToDo.Controllers
         [HttpPost]
         public ActionResult Login(UsuarioLogin Us)
         {
-            Usuario UsLog = homeService.BuscarUsuarioPorEmail(Us);
+            Usuario UsLog = ctx.Usuario.FirstOrDefault(o => o.Email == Us.Email);
 
             if (ModelState.IsValid && UsLog != null)
             {
