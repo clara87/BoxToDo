@@ -14,8 +14,7 @@ namespace WebBoxToDo.Controllers
 {
     public class HomeController : Controller
     {
-        //BoxToDo_Contexto ctx = new BoxToDo_Contexto();
-        HomeService homeService =new  HomeService();
+        HomeService homeService = new  HomeService();
 
         public ActionResult Index()
         {

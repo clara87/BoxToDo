@@ -27,7 +27,7 @@ namespace ServiceLayer.Services
 
         public void CrearUsuario(UsuarioRegistro UsReg, string result)
         {
-           Usuario UsNuevo = new Usuario();
+            Usuario UsNuevo = new Usuario();
             UsNuevo.Nombre = UsReg.Nombre;
             UsNuevo.Apellido = UsReg.Apellido;
             UsNuevo.Email = UsReg.Email;

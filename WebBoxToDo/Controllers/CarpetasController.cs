@@ -14,53 +14,116 @@ namespace WebBoxToDo.Controllers
 {
     public class CarpetasController : Controller
     {
-        // BoxToDo_Contexto ctx = new BoxToDo_Contexto();
         CarpetaService carpetaService = new CarpetaService();
+
 
         // GET: Carpetas
         public ActionResult Index()
         {
-            List<Carpeta> ListaCarpetas = carpetaService.ListarCarpeta();
-            return View(ListaCarpetas);
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (Session["login"] is true)
+            {
+                List<Carpeta> ListaCarpetas = carpetaService.ListarCarpeta(idUsu);
+                return View(ListaCarpetas);              
+            }
+            else
+            {
+                return RedirectToAction("Login","Home");
+            }
+            
         }
 
         public ActionResult Crear()
         {
-            return View();
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (Session["login"] is true)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
+           
         }
 
         [HttpPost]
         public ActionResult Crear(Carpeta carpeta)
         {
-            if (ModelState.IsValid)
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+            if (Session["login"] is true)
             {
-                carpetaService.CrearCarpeta(carpeta);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    carpetaService.CrearCarpeta(carpeta, idUsu);
+                    return RedirectToAction("Index");
+                }else
+                {
+                    return View(carpeta);
+                }
             }
-            return View(carpeta);
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }                          
         }
 
 
 
         public ActionResult Tareas(int id)
         {
-            List<Tarea> misTareas = carpetaService.ListarTareas(id);
-            ViewBag.NombreCarpeta = carpetaService.MostrarNombreCarpeta(id);
-            return View(misTareas);
+            if (Session["login"] is true)
+            {
+                var idUsuario = Session["id"];
+                int idUsu = Convert.ToInt32(idUsuario);
+                List<Tarea> misTareas = carpetaService.ListarTareas(id, idUsu);
+                ViewBag.NombreCarpeta = carpetaService.MostrarNombreCarpeta(id, idUsu);
+                return View(misTareas);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         ////para otro select
         public ActionResult ListarCarpetasOrdenadas()
         {
-            List<Carpeta> carpetasOrdenadas = carpetaService.ListarCarpetasOrdenadas();
-            return PartialView(carpetasOrdenadas);
+            if (Session["login"] is true)
+            {
+                var idUsuario = Session["id"];
+                int idUsu = Convert.ToInt32(idUsuario);
+                List<Carpeta> carpetasOrdenadas = carpetaService.ListarCarpetasOrdenadas(idUsu);
+                return PartialView(carpetasOrdenadas);
+            }
+            else
+            {
+                return View("Index");
+            }
 
         }
 
         public ActionResult MenuCarpetas()
         {
-            List<Carpeta> menuCarpetas = carpetaService.MenuCarpetas();
-            return PartialView(menuCarpetas);
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (Session["login"] is true)
+            {
+                List<Carpeta> menuCarpetas = carpetaService.MenuCarpetas(idUsu);
+                return PartialView(menuCarpetas);
+            }
+            else
+            {
+                return View("Index");
+            }
+
+           
         }
     }
 

@@ -12,44 +12,48 @@ namespace ServiceLayer.Services
     {
         BoxToDo_Contexto ctx = new BoxToDo_Contexto();
 
-        public List<Carpeta> ListarCarpeta()
+        public List<Carpeta> ListarCarpeta(int id)
         {
-            List<Carpeta> carpetas = ctx.Carpeta.OrderBy(a => a.Nombre).ToList();
-            return (carpetas);
+            List<Carpeta> carpetaUsuario= ctx.Carpeta.Where(o => o.IdUsuario == id).ToList();            
+            return (carpetaUsuario);
         }
 
 
-        public void CrearCarpeta(Carpeta carpeta)
+        public void CrearCarpeta(Carpeta carpeta, int idUsuario)
         {
+            carpeta.IdUsuario = idUsuario;
             carpeta.FechaCreacion = DateTime.Now;
             ctx.Carpeta.Add(carpeta);
             ctx.SaveChanges();
         }
 
 
-        public List<Tarea> ListarTareas(int id)
+        public List<Tarea> ListarTareas(int id, int idUsuario)
         {
-            List<Tarea> misTareas = ctx.Tarea.OrderBy(a => a.Prioridad).OrderBy(a => a.FechaFin).Where(a => a.IdCarpeta == id).ToList();
+            List<Tarea> misTareas = ctx.Tarea.OrderBy(a => a.Prioridad).OrderBy(a => a.FechaFin).Where(a => a.IdCarpeta == id && a.IdUsuario== idUsuario).ToList();
             return (misTareas);
         }
 
-        public String MostrarNombreCarpeta(int id)
+
+        public String MostrarNombreCarpeta(int id, int idUsuario)
         {
-            var NombreCarpeta = ctx.Carpeta.FirstOrDefault(a => a.IdCarpeta == id).Nombre;
+            var NombreCarpeta = ctx.Carpeta.FirstOrDefault(a => a.IdCarpeta == id && a.IdUsuario == idUsuario).Nombre;
+                
             return (NombreCarpeta);
         }
 
 
-        public List<Carpeta> ListarCarpetasOrdenadas()
+        public List<Carpeta> ListarCarpetasOrdenadas(int idUsu)
         {
-            List<Carpeta> carpetasOrdenadas = ctx.Carpeta.OrderBy(a => a.IdUsuario).Where(a => a.IdUsuario != null).ToList();
+            List<Carpeta> carpetasOrdenadas = ctx.Carpeta.OrderBy(a => a.IdUsuario).Where(a => a.IdUsuario == idUsu).ToList();
             return (carpetasOrdenadas);
 
         }
 
-        public List<Carpeta> MenuCarpetas()
+
+        public List<Carpeta> MenuCarpetas(int id)
         {
-            List<Carpeta> menuCarpetas = ctx.Carpeta.OrderBy(a => a.Nombre).ToList();
+            List<Carpeta> menuCarpetas = ctx.Carpeta.Where(o => o.IdUsuario == id).OrderBy(a => a.Nombre).ToList();
             return (menuCarpetas);
         }
     }

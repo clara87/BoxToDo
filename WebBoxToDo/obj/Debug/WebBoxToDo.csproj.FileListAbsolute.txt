@@ -313,3 +313,12 @@ C:\Users\Pablo\source\repos\BoxToDo\WebBoxToDo\bin\es\System.Web.WebPages.resour
 C:\Users\Pablo\source\repos\BoxToDo\WebBoxToDo\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Pablo\source\repos\BoxToDo\WebBoxToDo\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\Pablo\source\repos\BoxToDo\WebBoxToDo\obj\Debug\WebBoxToDo.csproj.CopyComplete
+C:\Users\aldan\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll
+C:\Users\aldan\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.pdb
+C:\Users\aldan\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll.config
+C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\DataAccessLayer.dll
+C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll
+C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\DataAccessLayer.pdb
+C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\DataAccessLayer.dll.config
+C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.pdb
+C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll.config

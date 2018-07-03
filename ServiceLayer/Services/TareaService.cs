@@ -11,17 +11,20 @@ namespace ServiceLayer.Services
     {
         BoxToDo_Contexto ctx = new BoxToDo_Contexto();
 
-        public List<Tarea> ListarTareas()
+        public List<Tarea> ListarTareas(int idUsuario)
         {
-            List<Tarea> tareas = ctx.Tarea.ToList();
+            List<Tarea> tareas = ctx.Tarea.Where(u=>u.IdUsuario == idUsuario).ToList();
             return (tareas);
         }
 
-        public void CrearTarea(Tarea tarea)
+        //ver esto
+        public void CrearTarea(Tarea tarea, int idUsuario)
         {
             tarea.FechaCreacion = DateTime.Now;
-            tarea.IdUsuario = 2;
+            tarea.IdUsuario = idUsuario;
             tarea.Completada = 0;
+            tarea.IdCarpeta = 1;
+
             ctx.Tarea.Add(tarea);
             ctx.SaveChanges();          
         }

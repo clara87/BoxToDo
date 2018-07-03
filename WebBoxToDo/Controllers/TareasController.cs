@@ -10,14 +10,23 @@ namespace WebBoxToDo.Controllers
 {
     public class TareasController : Controller
     {
-        BoxToDo_Contexto ctx = new BoxToDo_Contexto();
+
         TareaService tareaService = new TareaService();
 
         // GET: Tareas
         public ActionResult Index()
         {
-            List<Tarea> tareas = tareaService.ListarTareas();
-            return View(tareas);
+            if (Session["login"] is true)
+            {
+                var idUsuario = Session["id"];
+                int idUsu = Convert.ToInt32(idUsuario);
+                List<Tarea> tareas = tareaService.ListarTareas(idUsu);
+                return View(tareas);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
         public ActionResult Crear()
@@ -25,11 +34,23 @@ namespace WebBoxToDo.Controllers
             return View();
         }
 
+
+        //VER idCarpeta
         [HttpPost]
         public ActionResult Crear(Tarea tarea)
         {
-            tareaService.CrearTarea(tarea);
-            return RedirectToAction("Index");
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (Session["login"] is true)
+            {
+                tareaService.CrearTarea(tarea, idUsu);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
     }
