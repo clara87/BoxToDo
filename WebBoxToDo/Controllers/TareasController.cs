@@ -31,11 +31,21 @@ namespace WebBoxToDo.Controllers
 
         public ActionResult Crear()
         {
-            return View();
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (Session["login"] is true)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
         }
 
 
-        //VER idCarpeta
+       
         [HttpPost]
         public ActionResult Crear(Tarea tarea)
         {
@@ -53,5 +63,47 @@ namespace WebBoxToDo.Controllers
             }
         }
 
+
+        public ActionResult MenuTareas()
+        {
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (Session["login"] is true)
+            {
+                List<Tarea> menuTareas = tareaService.ListarTareasIncompletas(idUsu);
+                return PartialView("Index",menuTareas);
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
+
+            public ActionResult Detalle(int id)
+            {
+                if (Session["login"] is true)
+                {
+                    var idUsuario = Session["id"];
+                    int idUsu = Convert.ToInt32(idUsuario);
+                    ViewBag.nombreCarpeta = tareaService.NombreCarpeta(id);
+                    Tarea miTareas = tareaService.DetalleTarea(id, idUsu);
+           
+
+                    return View(miTareas);
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Home");
+                }
+            }
+
+        public ActionResult ListarComentarios(int id)
+        {
+            List<ComentarioTarea> comentarios = tareaService.Comentarios(id);
+            return PartialView(comentarios);
+        }
+
+        
     }
 }

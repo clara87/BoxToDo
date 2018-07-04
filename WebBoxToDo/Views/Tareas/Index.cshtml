@@ -4,7 +4,7 @@
     ViewBag.Title = "Mis tareas";
 }
 
-<h2>Mis Carpetas</h2>
+<h2>Mis tareas</h2>
 
 <p>
     @Html.ActionLink("Agregar Tarea", "Crear")
@@ -66,11 +66,11 @@
                     <span>Completa</span>
                 }
             </td>
-            <td><a href="Tareas/Detalle/@item.IdTarea">Ver</a></td>
+            <td><a href="/Tareas/Detalle/@item.IdTarea">Ver</a></td>
             <td>
                 @if (item.Completada == 0)
                 {
-                    @Html.CheckBox("Completar", false)
+                    @Html.CheckBox("Completada", false)
                 }
             </td>
         </tr>
