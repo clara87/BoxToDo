@@ -16,29 +16,24 @@
                 @Html.ActionLink("BoxToDo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Inicio", "Home", "Home")</li>
-                <li>@Html.ActionLink("Mis Carpetas", "Index", "Carpetas")</li>
-                <li>@Html.ActionLink("Mis Tareas", "Index", "Tareas")</li>
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>                
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Home/Logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                <li><a href="Home/Logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>                
             </ul>
         </div>
     </nav>
-
+    
     <div class="container-fluid altura-menu">
         <div class="row altura-menu">
             <div class="col-md-2 background-menu altura-menu">
                 @Html.Action("MenuCarpetas", "Carpetas")
             </div>
             <div class="col-md-10 background-contenido altura-menu">
-                @RenderBody()                
+                @RenderBody()
             </div>
         </div>
     </div>
-
-
-
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

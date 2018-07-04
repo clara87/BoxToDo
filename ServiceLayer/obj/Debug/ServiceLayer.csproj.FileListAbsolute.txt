@@ -4,6 +4,8 @@ C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\ServiceLayer.dll.confi
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\ServiceLayer.dll
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\ServiceLayer.pdb
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.dll
+C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\DataAccessLayer.pdb
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\DataAccessLayer.dll.config
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.xml
@@ -42,7 +44,10 @@ C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.csproj.C
 C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.dll
 C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.dll
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> parent of fef500e... Actualizaciones

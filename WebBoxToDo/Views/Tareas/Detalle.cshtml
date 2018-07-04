@@ -4,6 +4,7 @@
     ViewBag.Title = "Detalle";
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 <br />
 <div class="panel panel-default">
     <div class="panel-heading"><h2>@Model.Nombre</h2></div>
@@ -73,10 +74,60 @@
 </li>
     </ul>
 </div>
+=======
+>>>>>>> parent of fef500e... Actualizaciones
 
+<h2>Detalle</h2>
 
-<h2>Comentarios</h2>
+<div>
+    <h4>Tarea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTarea)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.IdTarea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCarpeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCarpeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimadoHoras)
+        </dt>
+
+<<<<<<< HEAD
 @Html.Action("ListarComentarios", "Tareas")
 =======
 
@@ -130,6 +181,8 @@
             @Html.DisplayNameFor(model => model.EstimadoHoras)
         </dt>
 
+=======
+>>>>>>> parent of fef500e... Actualizaciones
         <dd>
             @Html.DisplayFor(model => model.EstimadoHoras)
         </dd>
@@ -172,4 +225,7 @@
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> parent of fef500e... Actualizaciones
