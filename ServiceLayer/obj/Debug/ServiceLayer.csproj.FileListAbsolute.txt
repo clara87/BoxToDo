@@ -45,9 +45,14 @@ C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.dll
 C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.pdb
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.dll
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
 =======
 >>>>>>> origin/master
 =======
 >>>>>>> parent of fef500e... Actualizaciones
+=======
+C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.dll
+C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
+>>>>>>> parent of 8e9b3d7... Merge remote-tracking branch 'origin/master'
