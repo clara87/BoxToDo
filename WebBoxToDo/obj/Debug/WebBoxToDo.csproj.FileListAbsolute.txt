@@ -295,6 +295,7 @@ C:\Users\Pablo\source\repos\BoxToDo\WebBoxToDo\obj\Debug\WebBoxToDo.csproj.CopyC
 C:\Users\aldan\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll
 C:\Users\aldan\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.pdb
 C:\Users\aldan\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll.config
+<<<<<<< HEAD
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\DataAccessLayer.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\DataAccessLayer.pdb
@@ -322,3 +323,5 @@ C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\System.Web.WebPages.Deployment
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\System.Web.WebPages.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\System.Web.WebPages.Razor.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\WebGrease.dll
+=======
+>>>>>>> origin/master

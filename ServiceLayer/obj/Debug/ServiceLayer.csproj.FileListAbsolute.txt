@@ -41,5 +41,8 @@ C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.csproj.C
 C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.csproj.CopyComplete
 C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.dll
 C:\Users\aldan\source\repos\BoxToDo\ServiceLayer\obj\Debug\ServiceLayer.pdb
+<<<<<<< HEAD
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.dll
 C:\Users\poly\source\repos\BoxToDo\ServiceLayer\bin\Debug\EntityFramework.SqlServer.dll
+=======
+>>>>>>> origin/master
