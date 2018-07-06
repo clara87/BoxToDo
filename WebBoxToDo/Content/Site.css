@@ -1,0 +1,97 @@
+﻿/*Define la altura de la pagina al 100% de la pantalla*/
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+/*Clase que da el color al background en el login*/
+.background-index {    
+    background: linear-gradient(141deg, #e6f2ff 5%, #1fc8db 51%, #006fe6 90%);
+    /*background: linear-gradient(to bottom right, red, yellow);*/
+}
+
+/*Definde el ancho del panel de inicio de sesion y registro*/
+.ancho-panel {
+    width: 50%;
+}
+
+/*Centra los paneles de inicio de sesion y registro verticalmente*/
+.centrar-panel {
+    margin-top: 15%;
+    /*width: 50%;*/
+    /*margin-left: 25%;*/
+}
+
+/*Estilos para el panel de inicio de sesion*/
+.inicio-sesion {
+    margin: 2%;
+    padding: 2%;
+}
+
+
+/*Estilos para los input de inicio de sesion*/
+.box-input {
+    margin: 2%;
+}
+
+
+/*Estilos para el div que separa el formulario de login del de registro*/
+.separador {
+    color: #007bff;
+    border-bottom: 1px solid #007bff;
+    margin: 4% 0 4% 0;
+}
+
+
+/*Navbar*/
+.navbar {   
+    margin-bottom: 0px;     
+}
+
+.navbar-color {
+    background-color: #026aa7;
+    border-color: #026aa7;    
+}
+
+.navbar-header > a {
+    color: white;
+}
+
+.nav > li > a {
+    color: white;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #026aa7; 
+}
+
+
+/*Estilos para el menu*/
+.background-menu {
+    background: linear-gradient(to bottom, #e4e6e7 10%, #838c91 90%);
+    /*background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(192,192,192,1));*/
+}
+
+.list-group {
+    margin-top: 40px;
+}
+
+
+.list-group-item > a {
+    text-decoration: none !important;
+}
+
+
+/*Estilo para el contenido*/
+.background-contenido {
+    /*background: rgb(248, 245, 237);*/
+    background: #edeff0;
+}
+
+.altura-menu {
+    height:inherit;
+}

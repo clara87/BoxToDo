@@ -1,0 +1,13 @@
+﻿@model DataAccessLayer.Usuario
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Tareas incompletas</h2>
+
+<p>
+    @Html.ActionLink("Agregar Tarea", "Crear")
+</p>
+
+@Html.Action("TareasIncompletas", "Tareas")

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DataAccessLayer.Tarea>
+
+@{
+    ViewBag.Title = "Mis tareas";
+}
+
+
+<table class="table">
+    <tr>
+        <th>Fecha Creación</th>
+        <th>Fecha Fin</th>
+        <th>Nombre</th>
+        <th>Prioridad</th>
+        <th>Estimado</th>
+        <th>Carpeta</th>
+        <th>Completada</th>
+        <th>Acción</th>
+        <th>¿Completar?</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FechaCreacion.ToShortDateString()</td>
+            <td>
+                @if (item.FechaFin != null)
+                {
+                    @item.FechaFin.Value.ToShortDateString()
+                }
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+            <td>
+                @switch (item.Prioridad)
+                {
+                    case 1:
+                        <span>Urgente</span>
+                        break;
+                    case 2:
+                        <span>Alta</span>
+                        break;
+                    case 3:
+                        <span>Media</span>
+                        break;
+                    case 4:
+                        <span>Baja</span>
+                        break;
+                    default:
+                        <span>Sin prioridad</span>
+                        break;
+
+                }
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.EstimadoHoras)</td>
+            <td>@item.IdCarpeta</td>
+            <td>
+                @if (item.Completada == 0)
+                {
+                    <span>Incompleta</span>
+                }
+                else
+                {
+                    <span>Completa</span>
+                }
+            </td>
+            <td><a href="/Tareas/Detalle/@item.IdTarea">Ver</a></td>
+            <td>
+                @if (item.Completada == 0)
+                {
+                    @Html.CheckBox("Completada", false)
+                }
+            </td>
+        </tr>
+    }
+</table>
+
