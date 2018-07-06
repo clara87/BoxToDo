@@ -302,8 +302,11 @@ C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\DataAccessLayer.dll.config
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.pdb
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\ServiceLayer.dll.config
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+>>>>>>> b79a19c9ab1fbc95141f881475d1bc4115070cbb
+=======
 >>>>>>> b79a19c9ab1fbc95141f881475d1bc4115070cbb
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\Antlr3.Runtime.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\EntityFramework.dll
@@ -326,6 +329,7 @@ C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\System.Web.WebPages.Deployment
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\System.Web.WebPages.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\System.Web.WebPages.Razor.dll
 C:\Users\poly\source\repos\BoxToDo\WebBoxToDo\bin\WebGrease.dll
+<<<<<<< HEAD
 <<<<<<< HEAD
 C:\Users\aldan\Desktop\BoxToDo\WebBoxToDo\bin\ApplicationInsights.config
 C:\Users\aldan\Desktop\BoxToDo\WebBoxToDo\bin\WebBoxToDo.dll.config
@@ -438,9 +442,14 @@ C:\Users\aldan\Desktop\BoxToDo\WebBoxToDo\obj\Debug\WebBoxToDo.pdb
 =======
 <<<<<<< HEAD
 =======
+>>>>>>> b79a19c9ab1fbc95141f881475d1bc4115070cbb
+=======
 >>>>>>> origin/master
 =======
 >>>>>>> parent of fef500e... Actualizaciones
 =======
 >>>>>>> parent of 8e9b3d7... Merge remote-tracking branch 'origin/master'
+<<<<<<< HEAD
+>>>>>>> b79a19c9ab1fbc95141f881475d1bc4115070cbb
+=======
 >>>>>>> b79a19c9ab1fbc95141f881475d1bc4115070cbb
