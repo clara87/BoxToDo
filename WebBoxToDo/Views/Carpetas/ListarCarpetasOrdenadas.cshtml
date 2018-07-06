@@ -1,9 +1,0 @@
-﻿@model IEnumerable<DataAccessLayer.Carpeta>
-
-<select name="IdCarpeta" id="IdCarpeta" class="form-control">
-    <option value="1"></option>
-    @foreach(var item in Model)
-    {
-        <option value="@item.IdCarpeta">@item.Nombre</option>
-    }
-</select>
