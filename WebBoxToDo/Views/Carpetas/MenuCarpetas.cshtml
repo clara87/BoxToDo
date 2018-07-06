@@ -2,8 +2,11 @@
 
 
 <ul class="list-group">
-    @foreach (var item in Model)
-    {        
+    <li class="list-group-item text-center">
+        @Html.ActionLink("Crear Nueva Carpeta", "Crear")
+    </li>
+        @foreach (var item in Model)
+    {
     <li class="list-group-item text-center">
         <a href="/Carpetas/Tareas/@item.IdCarpeta">@Html.DisplayFor(modelItem => item.Nombre)</a>
     </li>

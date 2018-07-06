@@ -4,7 +4,10 @@
     ViewBag.Title = "Tareas en carpeta";
 }
 
-<h2>Carpeta @ViewBag.NombreCarpeta</h2>
+<h2>Carpeta: @ViewBag.NombreCarpeta</h2>
+<p>
+    @Html.ActionLink("Nueva Tarea", "Crear", "Tareas")
+</p>
 
 <table class="table">
     <tr>
@@ -61,7 +64,7 @@
                 <span>Completa</span>
             }
         </td>
-        <td><a href="Tareas/Detalle/@item.IdTarea">Ver</a></td>
+        <td><a href="/Tareas/Detalle/@item.IdTarea">Ver</a></td>
         <td>
             @if(item.Completada == 0)
             {

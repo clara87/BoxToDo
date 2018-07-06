@@ -53,7 +53,7 @@ namespace ServiceLayer.Services
 
         public List<Carpeta> MenuCarpetas(int id)
         {
-            List<Carpeta> menuCarpetas = ctx.Carpeta.Where(o => o.IdUsuario == id).OrderBy(a => a.Nombre).ToList();
+            List<Carpeta> menuCarpetas = ctx.Carpeta.Where(o => o.IdUsuario == id && o.IdUsuario == null).OrderBy(a => a.Nombre).ToList();
             return (menuCarpetas);
         }
     }

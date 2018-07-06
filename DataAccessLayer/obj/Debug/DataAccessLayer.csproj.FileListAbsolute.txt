@@ -29,7 +29,6 @@ C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.dll
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.xml
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.dll
