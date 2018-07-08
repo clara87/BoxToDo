@@ -14,7 +14,7 @@ namespace ServiceLayer.Services
 
         public List<Carpeta> ListarCarpeta(int idUsuario)
         {
-            List<Carpeta> carpeta = ctx.Carpeta.Where(o => o.IdUsuario == idUsuario)
+            List<Carpeta> carpeta = ctx.Carpeta.Where(o => o.IdUsuario == idUsuario || o.IdUsuario == null)
                                                .ToList();            
             return (carpeta);
         }

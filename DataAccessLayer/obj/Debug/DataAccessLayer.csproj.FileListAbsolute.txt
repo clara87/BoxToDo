@@ -45,3 +45,4 @@ C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.
 C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache

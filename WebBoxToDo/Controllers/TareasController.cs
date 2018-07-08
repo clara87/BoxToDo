@@ -161,14 +161,14 @@ namespace WebBoxToDo.Controllers
 
 
         //Completa una tarea.       
-        public ActionResult Completar(int idTarea)
+        public ActionResult Completar(int id)
         {
             var idUsuario = Session["id"];
             int idUsu = Convert.ToInt32(idUsuario);
 
-            if (idTarea > 0)
+            if (id > 0)
             {
-                tareaService.Completar(idTarea, idUsu);                
+                tareaService.Completar(id, idUsu);                
             }
 
             return RedirectToAction("Index");
@@ -221,14 +221,15 @@ namespace WebBoxToDo.Controllers
         public ActionResult AgregarComentario(ComentarioTarea comentario)
         {
             if (ModelState.IsValid)
-            {
+           {
                 tareaService.AgregarComentario(comentario);
                 return RedirectToAction("Detalle", new { id = comentario.IdTarea });
             }
             else
             {
-                return View(comentario);                
+                return View(comentario);
             }
+
         }
 
 
