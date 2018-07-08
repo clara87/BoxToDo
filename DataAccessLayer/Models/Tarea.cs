@@ -11,6 +11,7 @@ namespace DataAccessLayer
     [MetadataType(typeof(TareaMetadata))]
     public partial class Tarea
     {
+        public string NombreCarpeta { get; set; }
     }
 }
 

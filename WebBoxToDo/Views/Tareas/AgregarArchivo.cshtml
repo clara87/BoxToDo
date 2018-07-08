@@ -1,0 +1,14 @@
+﻿@model DataAccessLayer.ArchivoTarea
+
+@using (Html.BeginForm("AgregarArchivo", "Tareas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(a => a.IdTarea)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.TextBoxFor(model => model.RutaArchivo, new { type = "file", @class = "form-control-file" })
+    @Html.ValidationMessageFor(model => model.RutaArchivo, "", new { @class = "text-danger" })
+    <br>
+    <input type="submit" value="Agregar" class="btn btn-primary " />
+
+}
+

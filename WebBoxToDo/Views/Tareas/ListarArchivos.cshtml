@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DataAccessLayer.ArchivoTarea>
+
+
+
+    @foreach (var item in Model)
+    {
+        string nombreReal = item.RutaArchivo.Split('/')[4];
+        <h6>@item.FechaCreacion.ToShortDateString()</h6>
+        <p>@nombreReal</p>
+        @Html.ActionLink("Descargar", "DescargarArchivo", new { idTarea = item.IdTarea, nombre = nombreReal }, new { @class = "btn btn-success" })
+        <hr>
+    }

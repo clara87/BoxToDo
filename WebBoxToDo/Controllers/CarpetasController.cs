@@ -26,13 +26,14 @@ namespace WebBoxToDo.Controllers
             if (Session["login"] is true)
             {
                 List<Carpeta> ListaCarpetas = carpetaService.ListarCarpeta(idUsu);
-                return View(ListaCarpetas);              
+                return View(ListaCarpetas);
             }
             else
             {
-                return RedirectToAction("Login","Home");
+                Session["login"] = "Carpetas/Index";
+                return RedirectToAction("Login", "Home");
             }
-            
+
         }
 
         public ActionResult Crear()
@@ -46,9 +47,10 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
+                Session["login"] = "Carpetas/Crear";
                 return RedirectToAction("Login", "Home");
             }
-           
+
         }
 
         [HttpPost]
@@ -62,7 +64,8 @@ namespace WebBoxToDo.Controllers
                 {
                     carpetaService.CrearCarpeta(carpeta, idUsu);
                     return RedirectToAction("Index");
-                }else
+                }
+                else
                 {
                     return View(carpeta);
                 }
@@ -70,7 +73,7 @@ namespace WebBoxToDo.Controllers
             else
             {
                 return RedirectToAction("Login", "Home");
-            }                          
+            }
         }
 
 
@@ -82,11 +85,12 @@ namespace WebBoxToDo.Controllers
                 var idUsuario = Session["id"];
                 int idUsu = Convert.ToInt32(idUsuario);
                 List<Tarea> misTareas = carpetaService.ListarTareas(id, idUsu);
-                ViewBag.NombreCarpeta = carpetaService.MostrarNombreCarpeta(id, idUsu);
+                ViewBag.NombreCarpeta = carpetaService.MostrarNombreCarpeta(id);
                 return View(misTareas);
             }
             else
             {
+                Session["login"] = "Carpetas/Tareas";
                 return RedirectToAction("Login", "Home");
             }
         }
@@ -123,7 +127,7 @@ namespace WebBoxToDo.Controllers
                 return View("Index");
             }
 
-           
+
         }
     }
 

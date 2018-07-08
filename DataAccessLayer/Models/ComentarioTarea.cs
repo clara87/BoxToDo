@@ -4,8 +4,8 @@ using DataAccessLayer.Models;
 namespace DataAccessLayer
 {
 
-    [MetadataType(typeof(CarpetaMetadata))]
-    public partial class Carpeta
+    [MetadataType(typeof(ComentarioTareaMetadata))]
+    public partial class ComentarioTarea
     {
     }
 

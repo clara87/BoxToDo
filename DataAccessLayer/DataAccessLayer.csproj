@@ -73,8 +73,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArchivoTarea.cs" />
+    <Compile Include="Models\ArchivoTareaMetadata.cs" />
     <Compile Include="Models\Carpeta.cs" />
     <Compile Include="Models\CarpetaMetadata.cs" />
+    <Compile Include="Models\ComentarioTarea.cs" />
+    <Compile Include="Models\ComentarioTareaMetadata.cs" />
     <Compile Include="Models\Tarea.cs" />
     <Compile Include="Models\TareaMetadata.cs" />
     <Compile Include="Models\UsuarioLogin.cs" />

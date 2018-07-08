@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DataAccessLayer;
 using DataAccessLayer.Models;
 using Newtonsoft.Json.Linq;
-using System.Data.Entity.Validation;
 using System.Net;
 using ServiceLayer.Services;
 

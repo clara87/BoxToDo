@@ -6,7 +6,7 @@
 
 <h2>Carpeta: @ViewBag.NombreCarpeta</h2>
 <p>
-    @Html.ActionLink("Nueva Tarea", "Crear", "Tareas")
+    <a class="btn btn-success" href="/Carpetas/Crear">Nueva carpeta</a>
 </p>
 
 <table class="table">
@@ -16,13 +16,15 @@
         <th>Prioridad</th>
         <th>Estimado</th>
         <th>Completada</th>
-        <th>Acción</th>
         <th>¿Completar?</th>
+        <th>Detalle</th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
+    bool isComplete = item.Completada == 1;
     <tr>
-        <td>@if(item.FechaFin !=null){@item.FechaFin.Value.ToShortDateString()}</td>
+        <td>@if (item.FechaFin !=null){@item.FechaFin.Value.ToShortDateString()}</td>
         <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
         <td>
             @switch (item.Prioridad)
@@ -64,13 +66,28 @@
                 <span>Completa</span>
             }
         </td>
-        <td><a href="/Tareas/Detalle/@item.IdTarea">Ver</a></td>
         <td>
             @if(item.Completada == 0)
             {
-                @Html.CheckBox("Completar", false)
+            <input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" />
             }
         </td>
+        <td><a href="/Tareas/Detalle/@item.IdTarea"><span class="glyphicon glyphicon-eye-open"></span></a></td>
     </tr>
 }
 </table>
+
+<script>
+    function completarTarea(element, idTarea) {
+        $.ajax({
+            dataType: 'html',
+            type: 'POST',
+            url: "/Tarea/CompletarTarea?idTarea=" + idTarea,
+            async: true,
+            success: function () {
+                $(element).prop("disabled", true);
+                $("#tdComplete_" + idTarea).text("Sí");
+            }
+        });
+    }
+</script>

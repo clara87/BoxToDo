@@ -33,3 +33,15 @@ C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csp
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\poly\source\repos\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\aldan\Desktop\BoxToDo\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

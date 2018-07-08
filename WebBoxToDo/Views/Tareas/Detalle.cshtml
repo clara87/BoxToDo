@@ -4,76 +4,108 @@
     ViewBag.Title = "Detalle";
 }
 <br />
-<div class="panel panel-default">
-    <div class="panel-heading"><h2>@Model.Nombre</h2></div>
-    <div class="panel-body">
-    @if (Model.Descripcion == null)
-    {
-        <span>No posee descripción.</span>
-    }
-    else {
-        @Model.Descripcion
-    }
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading"><h2>@Model.Nombre</h2></div>
+            <div class="panel-body">
+                @if (Model.Descripcion == null)
+                {
+                    <span>No posee descripción.</span>
+                }
+                else
+                {
+                    @Model.Descripcion
+                }
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><b>Fecha de Creación:</b> @Model.FechaCreacion.ToShortDateString()</li>
+                <li class="list-group-item">
+                    <b>Fecha de Finalización: </b>
+                    @if (Model.FechaFin != null)
+                    {
+                        @Model.FechaFin.Value.ToShortDateString()
+                    }
+                    else
+                    { <span>---</span>}
+                </li>
+                <li class="list-group-item">
+                    <b>Estimado en horas: </b>
+                    @if (Model.EstimadoHoras != null)
+                    {
+                        @Model.EstimadoHoras
+                    }
+                    else
+                    { <span>---</span>}
+
+
+                </li>
+                <li class="list-group-item"><b>Carpeta: </b>@ViewBag.NombreCarpeta</li>
+                <li class="list-group-item">
+                    <b>Prioridad:</b>
+                    @switch (Model.Prioridad)
+                    {
+                        case 1:
+                            <span>Urgente</span>
+                            break;
+                        case 2:
+                            <span>Alta</span>
+                            break;
+                        case 3:
+                            <span>Media</span>
+                            break;
+                        case 4:
+                            <span>Baja</span>
+                            break;
+                        default:
+                            <span>Sin prioridad</span>
+                            break;
+
+                    }
+                </li>
+                <li class="list-group-item">
+                    <b>
+                        ¿Completada?:
+                    </b>
+                    @if (Model.IdCarpeta == 1)
+                    {
+                        <span>Sí</span>
+                    }
+                    else
+                    {
+                        <span>No</span>
+                    }
+                </li>
+            </ul>
+        </div>
     </div>
-    <ul class="list-group">
-        <li class="list-group-item"><b>Fecha de Creación:</b> @Model.FechaCreacion.ToShortDateString()</li>
-        <li class="list-group-item">
-            <b>Fecha de Finalización: </b>
-            @if (Model.FechaFin != null)
-            {
-                @Model.FechaFin.Value.ToShortDateString()
-            }
-            else
-            { <span>---</span>}
-        </li>
-        <li class="list-group-item">
-            <b>Estimado en horas: </b>
-            @if (Model.EstimadoHoras != null)
-            {
-                    @Model.EstimadoHoras
-            }
-            else
-            { <span>---</span> }
+    <div class="col-md-6">
+        <h2>Archivos</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Action("ListarArchivos", "Tareas")
+            </div>
+            <div class="panel-footer">
+                @Html.Action("AgregarArchivo", "Tareas")
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="row">
 
-        </li>
-        <li class="list-group-item"><b>Carpeta: </b>@ViewBag.NombreCarpeta</li>
-        <li class="list-group-item"><b>Prioridad:</b>
-    @switch (Model.Prioridad)
-    {
-        case 1:
-            <span>Urgente</span>
-            break;
-        case 2:
-            <span>Alta</span>
-            break;
-        case 3:
-            <span>Media</span>
-            break;
-        case 4:
-            <span>Baja</span>
-            break;
-        default:
-            <span>Sin prioridad</span>
-            break;
+    <div class="col-md-12">
+        <h2>Comentarios</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Action("ListarComentarios", "Tareas")
+            </div>
+            <div class="panel-footer">
+                @Html.Action("AgregarComentario", "Tareas")
+            </div>
+        </div>
+    </div>
 
-    }
-</li>
-        <li class="list-group-item"><b>
-    ¿Completada?:</b>
-    @if (Model.IdCarpeta == 1)
-    {
-        <span>Sí</span>
-    }
-    else
-    {
-        <span>No</span>
-    }
-</li>
-    </ul>
 </div>
 
 
-<h2>Comentarios</h2>
-
-@Html.Action("ListarComentarios", "Tareas")

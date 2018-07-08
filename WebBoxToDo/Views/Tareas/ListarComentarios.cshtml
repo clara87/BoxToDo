@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<DataAccessLayer.ComentarioTarea>
 
 
-<ul class="list-group">
+
     @foreach (var item in Model)
     {
-        <li class="list-group-item">@item.FechaCreacion.ToShortDateString() | @item.Texto</li>
+    <h6>@item.FechaCreacion.ToShortDateString()</h6>
+    <h3>@(string.IsNullOrWhiteSpace(item.Texto) ? "-" : item.Texto)</h3>
+    <hr>
     }
-</ul>
+

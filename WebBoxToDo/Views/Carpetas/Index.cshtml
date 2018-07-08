@@ -7,33 +7,21 @@
 <h2>Mis Carpetas</h2>
 
 <p>
-    @Html.ActionLink("Agregar Carpeta", "Crear")
+    <a class="btn btn-success" href="/Carpetas/Crear">Nueva carpeta</a>
 </p>
 <table class="table">
     <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Descripción
-        </th>
-        <th>
-            Fecha de Creación
-        </th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Fecha de Creación</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                <a href="/Carpetas/Tareas/@item.IdCarpeta">@Html.DisplayFor(modelItem => item.Nombre)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @item.FechaCreacion.ToShortDateString()
-            </td>
+            <td><a href="/Carpetas/Tareas/@item.IdCarpeta">@item.Nombre</a></td>
+            <td>@item.Descripcion</td>
+            <td>@item.FechaCreacion.ToShortDateString()</td>
         </tr>
     }
 
