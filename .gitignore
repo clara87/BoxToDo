@@ -1,12 +1,1 @@
-WebBoxToDo/Web.config
-.vs/BoxToDo/v15/.suo
-.vs/BoxToDo/v15/Server/sqlite3/db.lock
-.vs/BoxToDo/v15/Server/sqlite3/storage.ide
-*.config
-*.cache
-*.cache
-*.dll
-*.pdb
-ServiceLayer/obj/Debug/ServiceLayer.csproj.CoreCompileInputs.cache
-WebBoxToDo/WebBoxToDo.csproj.user
-WebBoxToDo/obj/Debug/WebBoxToDo.pdb
+
