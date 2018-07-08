@@ -21,56 +21,58 @@
     @foreach (var item in Model)
     {
         bool isComplete = item.Completada == 1;
-        <tr>
-            <td>@item.FechaCreacion.ToShortDateString()</td>
-            <td>
-                @if (item.FechaFin != null)
-                {
-                    @item.FechaFin.Value.ToShortDateString()
-                }
-            </td>
-            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-            <td>
-                @switch (item.Prioridad)
-                {
-                    case 1:
-                        <span>Urgente</span>
-                        break;
-                    case 2:
-                        <span>Alta</span>
-                        break;
-                    case 3:
-                        <span>Media</span>
-                        break;
-                    case 4:
-                        <span>Baja</span>
-                        break;
-                    default:
-                        <span>Sin prioridad</span>
-                        break;
+    <tr>
+        <td>@item.FechaCreacion.ToShortDateString()</td>
+        <td>
+            @if (item.FechaFin != null)
+            {
+                @item.FechaFin.Value.ToShortDateString()
+            }
+        </td>
+        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+        <td>
+            @switch (item.Prioridad)
+            {
+                case 1:
+                    <span>Urgente</span>
+                    break;
+                case 2:
+                    <span>Alta</span>
+                    break;
+                case 3:
+                    <span>Media</span>
+                    break;
+                case 4:
+                    <span>Baja</span>
+                    break;
+                default:
+                    <span>Sin prioridad</span>
+                    break;
 
-                }
-            </td>
-            <td>@Html.DisplayFor(modelItem => item.EstimadoHoras)</td>
-            <td>@item.NombreCarpeta</td>
-            <td>
-                @if (item.Completada == 0)
-                {
-                    <span>Incompleta</span>
-                }
-                else
-                {
-                    <span>Completa</span>
-                }
-            </td>
-            <td>
-                @if (item.Completada == 0)
-                {
-                <input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" />
-                }
-            </td>
-            <td><a href="/Tareas/Detalle/@item.IdTarea"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-        </tr>
+            }
+        </td>
+        <td>@Html.DisplayFor(modelItem => item.EstimadoHoras)</td>
+        <td>@item.NombreCarpeta</td>
+        <td>
+            @if (item.Completada == 0)
+            {
+                <span>Incompleta</span>
+            }
+            else
+            {
+                <span>Completa</span>
+            }
+        </td>
+        <td>
+            @if (item.Completada == 0)
+            {                
+                <a href="/Tareas/Completar/@item.IdTarea">Completar</a>
+                <!--input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" /-->
+            }
+        </td>
+        <td><a href="/Tareas/Detalle/@item.IdTarea"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+
+    </tr>
     }
 </table>
 

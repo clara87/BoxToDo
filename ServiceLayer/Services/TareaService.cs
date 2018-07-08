@@ -23,11 +23,26 @@ namespace ServiceLayer.Services
             return tareas;
         }
 
+
         public void CheckboxCompletarTarea(Tarea tarea)
         {
             tarea.Completada = 1;
             ctx.SaveChanges();
         }
+
+
+        //Actualiza en la base la tarea completa
+        public void Completar(int idTarea, int idUsuario)
+        {
+            Tarea TareaEncontrada = ctx.Tarea.FirstOrDefault(t => t.IdTarea == idTarea && t.IdUsuario == idUsuario);
+
+            if (TareaEncontrada != null)
+            {
+                TareaEncontrada.Completada = 1;
+                ctx.SaveChanges();
+            }
+        }
+
 
         public void CrearTarea(Tarea tarea, int idUsuario)
         {
@@ -40,17 +55,23 @@ namespace ServiceLayer.Services
             ctx.SaveChanges();
         }
 
+
         public Tarea DetalleTarea(int id, int idUsuario)
         {
             Tarea tarea = ctx.Tarea.Include("ComentarioTarea")
                                     .Include("ArchivoTarea")
                                     .FirstOrDefault(u => u.IdTarea == id && u.IdUsuario == idUsuario);
-            tarea.ComentarioTarea = tarea.ComentarioTarea.OrderByDescending(a => a.FechaCreacion)
+            if (tarea != null)
+            {
+                tarea.ComentarioTarea = tarea.ComentarioTarea.OrderByDescending(a => a.FechaCreacion)
                                                           .ToList();
-            tarea.ArchivoTarea = tarea.ArchivoTarea.OrderByDescending(a => a.FechaCreacion)
-                                                         .ToList();
+                tarea.ArchivoTarea = tarea.ArchivoTarea.OrderByDescending(a => a.FechaCreacion)
+                                                             .ToList();
+            }
+            
             return tarea;
         }
+
 
         public List<Tarea> ListarTareasIncompletas(int idUsuario)
         {
@@ -62,6 +83,7 @@ namespace ServiceLayer.Services
             return (tareasIncompletas);
         }
 
+
         public List<Tarea> ListarTareasCompletas(int idUsuario)
         {
             List<Tarea> tareasCompletas = ctx.Tarea.Where(o => o.IdUsuario == idUsuario)
@@ -72,11 +94,13 @@ namespace ServiceLayer.Services
             return (tareasCompletas);
         }
 
+
         public Tarea IdDeTarea(int idTarea)
         {
             Tarea tarea = ctx.Tarea.FirstOrDefault(a => a.IdTarea == idTarea);
             return tarea;
         }
+
 
         public void AgregarComentario(ComentarioTarea comentario)
         {
@@ -84,6 +108,7 @@ namespace ServiceLayer.Services
             ctx.ComentarioTarea.Add(comentario);
             ctx.SaveChanges();
         }
+
 
         public List<ArchivoTarea> ListarArchivos(int idTarea)
         {
@@ -93,6 +118,7 @@ namespace ServiceLayer.Services
             return archivos;
         }
 
+
         public List<ComentarioTarea> ListarComentarios(int idTarea)
         {
             List<ComentarioTarea> comentarios = ctx.ComentarioTarea.Where(a => a.IdTarea == idTarea)
@@ -101,6 +127,7 @@ namespace ServiceLayer.Services
             return comentarios;
         }
 
+
         public void AgregarArchivo(ArchivoTarea archivo)
         {
             archivo.FechaCreacion = DateTime.Now;
@@ -108,13 +135,16 @@ namespace ServiceLayer.Services
             ctx.SaveChanges();
         }
 
+
         public string NombreCarpeta(int id)
         {
+            string carpeta = "";
             Tarea tarea = ctx.Tarea.FirstOrDefault(a => a.IdTarea == id);
-            string carpeta = ctx.Carpeta.FirstOrDefault(c => c.IdCarpeta == tarea.IdCarpeta).Nombre;
+            carpeta = ctx.Carpeta.FirstOrDefault(c => c.IdCarpeta == tarea.IdCarpeta).Nombre;
             return carpeta;
 
         }
+
 
         public string GuardarArchivo(HttpPostedFileBase archivo, string nombre, int idTarea)
         {
@@ -136,7 +166,6 @@ namespace ServiceLayer.Services
         }
 
         
-
         private static string GenerarNombreUnico(string nombre)
         {
             string randomString = System.Web.Security.Membership.GeneratePassword(20, 0);

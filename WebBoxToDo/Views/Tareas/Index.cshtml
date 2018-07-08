@@ -79,7 +79,9 @@
                     <td>
                         @if (item.Completada == 0)
                         {
-                            <input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" />
+                            <a href="/Tareas/Completar/@item.IdTarea"></a>
+                            <!--input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" /-->
+
                         }
                     </td>
                     <td><a href="/Tareas/Detalle/@item.IdTarea"><span class="glyphicon glyphicon-eye-open"></span></a></td>

@@ -46,7 +46,6 @@ namespace ServiceLayer.Services
             UsEncontrado.Activo = 1;
             UsEncontrado.FechaActivacion = DateTime.Now;
             ctx.SaveChanges();
-
         }
 
         public Usuario BuscarUsuarioPorEmail(UsuarioLogin Us)

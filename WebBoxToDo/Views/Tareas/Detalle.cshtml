@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-info">
-            <div class="panel-heading"><h2>@Model.Nombre</h2></div>
+            <div class="panel-heading">@Model.Nombre</div>
             <div class="panel-body">
                 @if (Model.Descripcion == null)
                 {
@@ -79,9 +79,9 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-6">
-        <h2>Archivos</h2>
-        <div class="panel panel-default">
+    <div class="col-md-6">        
+        <div class="panel panel-info">
+            <div class="panel-heading">Subir archivo</div>
             <div class="panel-body">
                 @Html.Action("ListarArchivos", "Tareas")
             </div>
@@ -93,10 +93,9 @@
 </div>
 
 <div class="row">
-
-    <div class="col-md-12">
-        <h2>Comentarios</h2>
+    <div class="col-md-12">        
         <div class="panel panel-default">
+            <div class="panel-heading">Comentarios</div>
             <div class="panel-body">
                 @Html.Action("ListarComentarios", "Tareas")
             </div>
@@ -105,7 +104,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 

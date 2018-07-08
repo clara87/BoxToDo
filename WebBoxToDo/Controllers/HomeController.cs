@@ -13,6 +13,7 @@ namespace WebBoxToDo.Controllers
     {
         HomeService homeService = new  HomeService();
 
+        //Verifica que las cookies existan.    
         public ActionResult Index()
         {
             if (Request.Cookies["recordarme"] != null)
@@ -23,7 +24,7 @@ namespace WebBoxToDo.Controllers
                     Usuario UsLog = homeService.BuscarUsuarioPorId(id);
                     Session["login"] = true;
                     Session["id"] = UsLog.IdUsuario;
-
+                    
                     return View("Home", UsLog);
                 }
             }
@@ -74,17 +75,18 @@ namespace WebBoxToDo.Controllers
 
         }
 
-
+        //Devuelve la vista
         public ActionResult Home()
-        {
+        {            
             if (Session["login"] is true)
             {
                 return View();
             }
             else
             {
-                return View("Index");
-            }
+                TempData["url"] = Request.Url.AbsolutePath;
+                return View("Login");
+            }            
         }
 
         //Devuelve la vista.
@@ -96,7 +98,7 @@ namespace WebBoxToDo.Controllers
         //Recibe el formulario de login.
         [HttpPost]
         public ActionResult Login(UsuarioLogin Us)
-        {
+        {           
             Usuario UsLog = homeService.BuscarUsuarioPorEmail(Us);
 
             if (ModelState.IsValid && UsLog != null)
@@ -119,7 +121,17 @@ namespace WebBoxToDo.Controllers
 
                         Session["login"] = true;
                         Session["id"] = UsLog.IdUsuario;
-                        return View("Home", UsLog);
+                        
+                        if (TempData["url"] == null)
+                        {
+                            return View("Home", UsLog);
+                        }
+                        else
+                        {
+                            string url = TempData["url"].ToString();
+                            Response.Redirect(url);
+                        }
+                        
                     }
                     else
                     {

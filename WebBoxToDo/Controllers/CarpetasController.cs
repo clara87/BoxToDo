@@ -16,7 +16,6 @@ namespace WebBoxToDo.Controllers
     {
         CarpetaService carpetaService = new CarpetaService();
 
-
         // GET: Carpetas
         public ActionResult Index()
         {
@@ -30,7 +29,8 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                Session["login"] = "Carpetas/Index";
+                //Session["login"] = "Carpetas/Index";
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
 
@@ -47,7 +47,8 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                Session["login"] = "Carpetas/Crear";
+                //Session["login"] = "Carpetas/Crear";
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
 
@@ -72,6 +73,7 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
@@ -90,7 +92,8 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                Session["login"] = "Carpetas/Tareas";
+                //Session["login"] = "Carpetas/Tareas";
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
@@ -107,7 +110,8 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                return View("Index");
+                TempData["url"] = Request.Url.AbsolutePath;
+                return RedirectToAction("Login", "Home");
             }
 
         }
@@ -124,7 +128,8 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                return View("Index");
+                TempData["url"] = Request.Url.AbsolutePath;
+                return RedirectToAction("Login", "Home");
             }
 
 

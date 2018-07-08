@@ -33,10 +33,11 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                Session["login"] = "Tareas/Index";
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
+
 
         public ActionResult Crear()
         {
@@ -49,11 +50,10 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                Session["login"] = "Tareas/Crear";
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
-
 
 
         [HttpPost]
@@ -69,6 +69,7 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
@@ -93,9 +94,11 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                return View("Index");
+                TempData["url"] = Request.Url.AbsolutePath;
+                return RedirectToAction("Login", "Home");
             }
         }
+
 
         public ActionResult TareasCompletas()
         {
@@ -117,34 +120,60 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
-                return View("Index");
+                TempData["url"] = Request.Url.AbsolutePath;
+                return RedirectToAction("Login", "Home");
             }
         }
+
 
         public ActionResult Detalle(int id)
         {
             if (Session["login"] is true)
             {
-                var idUsuario = Session["id"];
-                int idUsu = Convert.ToInt32(idUsuario);
-                ViewBag.nombreCarpeta = tareaService.NombreCarpeta(id);
-                Tarea miTareas = tareaService.DetalleTarea(id, idUsu);
+                if (id > 0)
+                {
+                    var idUsuario = Session["id"];
+                    int idUsu = Convert.ToInt32(idUsuario);
+                    ViewBag.nombreCarpeta = tareaService.NombreCarpeta(id);
+                    Tarea miTareas = tareaService.DetalleTarea(id, idUsu);
 
-
-                return View(miTareas);
+                    return View(miTareas);
+                }
+                else
+                {
+                    return View();
+                }
+                
             }
             else
             {
-                Session["login"] = "Tareas/Index";
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
+
 
         public void CompletarCkeckTarea(int id)
         {
             Tarea tarea = tareaService.IdDeTarea(id);
             tareaService.CheckboxCompletarTarea(tarea);
         }
+
+
+        //Completa una tarea.       
+        public ActionResult Completar(int idTarea)
+        {
+            var idUsuario = Session["id"];
+            int idUsu = Convert.ToInt32(idUsuario);
+
+            if (idTarea > 0)
+            {
+                tareaService.Completar(idTarea, idUsu);                
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         public ActionResult ListarComentarios(int id)
         {
@@ -157,9 +186,11 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
+
 
         public ActionResult ListarArchivos(int id)
         {
@@ -172,9 +203,11 @@ namespace WebBoxToDo.Controllers
             }
             else
             {
+                TempData["url"] = Request.Url.AbsolutePath;
                 return RedirectToAction("Login", "Home");
             }
         }
+
 
         public ActionResult AgregarComentario(int id)
         {
@@ -183,12 +216,21 @@ namespace WebBoxToDo.Controllers
             return PartialView(comentario);
         }
 
+
         [HttpPost]
         public ActionResult AgregarComentario(ComentarioTarea comentario)
         {
-            tareaService.AgregarComentario(comentario);
-            return RedirectToAction("Detalle", new { id = comentario.IdTarea });
+            if (ModelState.IsValid)
+            {
+                tareaService.AgregarComentario(comentario);
+                return RedirectToAction("Detalle", new { id = comentario.IdTarea });
+            }
+            else
+            {
+                return View(comentario);                
+            }
         }
+
 
         public ActionResult AgregarArchivo(int id)
         {
@@ -196,6 +238,7 @@ namespace WebBoxToDo.Controllers
             archivo.IdTarea = id;
             return PartialView(archivo);
         }
+
 
         [HttpPost]
         public ActionResult AgregarArchivo(ArchivoTarea archivo)
@@ -209,6 +252,7 @@ namespace WebBoxToDo.Controllers
             return RedirectToAction("Detalle", new { id = archivo.IdTarea });
         }
 
+
         public ActionResult DescargarArchivo(int idTarea, string nombre)
         {
             string carpetaAdjuntos = System.Configuration.ConfigurationManager.AppSettings["CarpetaAdjuntos"];
@@ -220,5 +264,7 @@ namespace WebBoxToDo.Controllers
             byte[] fileBytes = System.IO.File.ReadAllBytes(path + nombre);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, nombre);
         }
+
+        
     }
 }
