@@ -14,7 +14,6 @@
         <th>Estimado</th>
         <th>Carpeta</th>
         <th>Completada</th>
-        <th>¿Completar?</th>
         <th>Detalle</th>
     </tr>
 
@@ -53,16 +52,6 @@
             </td>
             <td>@Html.DisplayFor(modelItem => item.EstimadoHoras)</td>
             <td>@item.NombreCarpeta</td>
-            <td>
-                @if (item.Completada == 0)
-                {
-                    <span>Incompleta</span>
-                }
-                else
-                {
-                    <span>Completa</span>
-                }
-            </td>
             <td>
                 @if (item.Completada == 0)
                 {

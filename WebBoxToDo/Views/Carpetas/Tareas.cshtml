@@ -16,15 +16,17 @@
         <th>Prioridad</th>
         <th>Estimado</th>
         <th>Completada</th>
-        <th>¿Completar?</th>
         <th>Detalle</th>
     </tr>
 
-@foreach (var item in Model)
-{
-    bool isComplete = item.Completada == 1;
-    <tr>
-        <td>@if (item.FechaFin !=null){@item.FechaFin.Value.ToShortDateString()}</td>
+    @foreach (var item in Model)
+    {
+        bool isComplete = item.Completada == 1;
+        <tr>
+            <td>
+                @if (item.FechaFin != null)
+                {@item.FechaFin.Value.ToShortDateString()}
+        </td>
         <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
         <td>
             @switch (item.Prioridad)
@@ -51,25 +53,21 @@
             @if (item.EstimadoHoras != null)
             {
                 @Html.DisplayFor(modelItem => item.EstimadoHoras)
-            }else
+            }
+            else
             {
                 <span>Indefinido</span>
             }
         </td>
-         <td>
+        <td>
             @if (item.Completada == 0)
             {
-                <span>Incompleta</span>
+                <a href="/Tareas/Completar/@item.IdTarea">Completar</a>
+                <!--input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" /-->
             }
             else
             {
-                <span>Completa</span>
-            }
-        </td>
-        <td>
-            @if(item.Completada == 0)
-            {
-            <input type="checkbox" id="chkCompletar" disabled="@isComplete" checked="@isComplete" onchange="completarTarea(this, @item.IdTarea)" />
+                <span>Cumplida</span>
             }
         </td>
         <td><a href="/Tareas/Detalle/@item.IdTarea"><span class="glyphicon glyphicon-eye-open"></span></a></td>
