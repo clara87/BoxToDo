@@ -137,7 +137,14 @@ namespace WebBoxToDo.Controllers
                     ViewBag.nombreCarpeta = tareaService.NombreCarpeta(id);
                     Tarea miTareas = tareaService.DetalleTarea(id, idUsu);
 
-                    return View(miTareas);
+                    if (miTareas != null)
+                    {
+                        return View(miTareas);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 else
                 {
